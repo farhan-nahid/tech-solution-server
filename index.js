@@ -18,7 +18,10 @@
   
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   client.connect(err => {
+
     const serviceCollection = client.db("techSolution").collection("services");
+    const adminCollection = client.db("techSolution").collection("admin");
+    const orderCollection = client.db("techSolution").collection("order");
   
       app.post('/addAService', (req, res) =>{
         const textArea = req.body.textArea
@@ -46,6 +49,23 @@
                 res.send(documents);
             })
     });
+
+    app.post('/addAdmin', (req,res)=>{
+      const newAdmin = req.body.email;
+      adminCollection.insertOne(newAdmin)
+      .then(result =>{
+        res.send(result.insertedCount > 0)
+      })
+    })
+
+    // app.post('/isDoctor', (req, res)=>{
+    //   const email = req.body.email
+    //   adminCollection.find({email:email})
+    //   .toArray((err, admins) => {
+    //    res.send(admins.length > 0)
+    //   })
+     
+    // })
   
   
      
