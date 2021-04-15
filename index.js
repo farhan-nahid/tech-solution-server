@@ -3,6 +3,7 @@
   const MongoClient = require('mongodb').MongoClient;
   const fileUpload = require('express-fileupload');
   const cors = require('cors');
+  const { ObjectID, ObjectId } = require('bson');
   const app = express()
   require('dotenv').config();
   
@@ -18,7 +19,6 @@
   
   const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
   client.connect(err => {
-
     const serviceCollection = client.db("techSolution").collection("services");
     const adminCollection = client.db("techSolution").collection("admin");
     const orderCollection = client.db("techSolution").collection("order");
@@ -49,6 +49,21 @@
                 res.send(documents);
             })
     });
+
+    app.get('/services/:id', (req, res)=>{
+      serviceCollection.find({_id:ObjectID(req.params.id)})
+        .toArray((err, service)=>{
+       res.send( service[0]);
+        })
+       })
+
+      //  app.post('/orderCheckout', (req, res)=>{
+      //   const newOrder = req.body;
+      //   orderCollection.insertOne(newOrder)
+      //   .then(result=>{
+      //     res.send(result.insertedCount > 0)
+      //   })
+      // })
 
     app.post('/addAdmin', (req,res)=>{
       const newAdmin = req.body.email;
