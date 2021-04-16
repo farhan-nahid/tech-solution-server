@@ -1,1 +1,44 @@
-# complete-website-server-farhan-nahid
+## [Tech Solution](https://happy-zone-store.web.app/)
+
+ -> about this site
+
+- It is a electronic devices service center website
+- User can take any service
+- User can see his order in order section
+- User can review this site
+- User and Admin can log in this website using google account
+- Admin can add more services
+- Admin can add more admin
+- Admin can delete services
+- Admin can see all order
+- Admin can change the order contion
+- Website has a our work slider(Added as bonus section)
+- Navbar(when a user & admin Login in this website he see his photoURL in navbar. When he Click this photo he see his photoURL, name, email & logout button)
+- Responsive
+
+### Front-end Technology:
+
+- HTML5
+- CSS3
+- Bootstrap5
+- React Bootstrap
+- React JS
+- React-hook-form
+- React-router-dom
+- Firebase-Authentication
+
+### Back-end Technology:
+
+- Node JS
+- Express JS
+- MongoDB
+
+### Tools:
+
+- dotenv
+- git
+- github
+
+
+
+You can see server side code in [Bismillah-Mobile-Zone-client](https://github.com/Porgramming-Hero-web-course/complete-website-client-farhan-nahid)
