@@ -50,37 +50,37 @@
             })
     });
 
-    app.get('/services/:id', (req, res)=>{
-      serviceCollection.find({_id:ObjectID(req.params.id)})
+      app.get('/services/:id', (req, res)=>{
+         serviceCollection.find({_id:ObjectID(req.params.id)})
         .toArray((err, service)=>{
-       res.send( service[0]);
+          res.send( service[0]);
         })
-       })
+     }) 
 
-      //  app.post('/orderCheckout', (req, res)=>{
-      //   const newOrder = req.body;
-      //   orderCollection.insertOne(newOrder)
-      //   .then(result=>{
-      //     res.send(result.insertedCount > 0)
-      //   })
-      // })
+       app.post('/addOrder',(req,res)=>{
+        orderCollection.insertOne(req.body)
+        .then(result=>{
+          res.send(result.insertedCount>0)
+        })
+        .catch(error=>console.log(error))
+      })
 
     app.post('/addAdmin', (req,res)=>{
       const newAdmin = req.body.email;
-      adminCollection.insertOne(newAdmin)
+      adminCollection.insertOne({email:newAdmin})
       .then(result =>{
         res.send(result.insertedCount > 0)
       })
     })
 
-    // app.post('/isDoctor', (req, res)=>{
-    //   const email = req.body.email
-    //   adminCollection.find({email:email})
-    //   .toArray((err, admins) => {
-    //    res.send(admins.length > 0)
-    //   })
+    app.post('/isAdmin', (req, res)=>{
+      const email = req.body.email
+      adminCollection.find({email:email})
+      .toArray((err, admins) => {
+        res.send(admins.length > 0)
+      })
      
-    // })
+    })
   
   
      
