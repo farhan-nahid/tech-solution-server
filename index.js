@@ -22,6 +22,8 @@
     const serviceCollection = client.db("techSolution").collection("services");
     const adminCollection = client.db("techSolution").collection("admin");
     const orderCollection = client.db("techSolution").collection("order");
+    const reviewCollection = client.db("techSolution").collection("review");
+    
   
       app.post('/addAService', (req, res) =>{
         const textArea = req.body.textArea
@@ -64,6 +66,36 @@
         })
         .catch(error=>console.log(error))
       })
+
+      app.get('/allOrders', (req, res) => {
+        orderCollection.find({})
+            .toArray((err, docs) => {
+              console.log(docs);
+                res.send(docs);
+            })
+    });
+
+      app.get('/order', (req, res)=>{
+        orderCollection.find({email: req.query.email})
+        .toArray((err, totalOrder)=>{
+          res.send( totalOrder)
+        })
+      })
+
+      app.post('/addReview', (req,res)=>{
+        const newReview = req.body;
+        reviewCollection.insertOne({name:newReview.name, companyName:newReview.companyName, description:newReview.description})
+        .then(result =>{
+          res.send(result.insertedCount > 0)
+        })
+      })
+
+      app.get('/review', (req, res) => {
+        reviewCollection.find({})
+            .toArray((err, documents) => {
+                res.send(documents);
+            })
+    });
 
     app.post('/addAdmin', (req,res)=>{
       const newAdmin = req.body.email;
