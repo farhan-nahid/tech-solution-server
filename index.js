@@ -121,7 +121,18 @@
       })
     })
   
-  
+    app.patch('/updateStatus',(req,res)=>{
+      orderCollection.updateOne(
+        {_id:ObjectID(req.body.id)},
+        {
+          $set:{'status':req.body.status}
+        }
+      )
+      .then(result=>{
+        res.send(result.modifiedCount>0)
+      })
+      .catch(err=>console.log(err))
+    })
      
   
     
