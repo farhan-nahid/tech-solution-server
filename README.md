@@ -1,4 +1,4 @@
-## [Tech Solution](https://happy-zone-store.web.app/)
+## [Tech Solution](https://tech-support-farhan.web.app)
 
  -> about this site
 
