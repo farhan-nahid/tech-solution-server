@@ -84,7 +84,7 @@
 
       app.post('/addReview', (req,res)=>{
         const newReview = req.body;
-        reviewCollection.insertOne({name:newReview.name, companyName:newReview.companyName, description:newReview.description})
+        reviewCollection.insertOne({name:newReview.name, companyName:newReview.companyName, description:newReview.description,img:newReview.img})
         .then(result =>{
           res.send(result.insertedCount > 0)
         })
