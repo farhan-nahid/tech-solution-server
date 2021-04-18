@@ -113,6 +113,13 @@
       })
      
     })
+
+    app.delete('/serviceDelete/:id', (req, res)=>{
+      serviceCollection.deleteOne({_id: ObjectId(req.params.id)})
+      .then( result =>{
+        res.send(result.deletedCount > 0)
+      })
+    })
   
   
      
