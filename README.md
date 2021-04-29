@@ -41,4 +41,4 @@
 
 
 
-You can see client side code in [Tech-Solution-Client](https://github.com/Porgramming-Hero-web-course/complete-website-client-farhan-nahid)
+You can see client side code in [Tech-Solution-Client](https://github.com/farhan-nahid/tech-solution-client.git)
