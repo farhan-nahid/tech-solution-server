@@ -1,5 +1,7 @@
 ## [Tech Solution](https://tech-support-farhan.web.app)
 
+
+<img src="https://i.ibb.co/jZjmnkL/Tech-Solution.png" />
  -> about this site
 
 - It is a electronic devices service center website
